@@ -32,7 +32,7 @@
 	function init(){	
 		//$("#timeleft").html("Time Left: " + "hi" + "<br> Total pot amount : 100");
 		
-		//myVar = setInterval(loop, 1000/30);
+		myVar = setInterval(loop, 1000/30);
 	}
 	function loop() { 
 		context.clearRect(0,0,canvas.width, canvas.height); 
