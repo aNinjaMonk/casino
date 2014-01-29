@@ -32,7 +32,47 @@
 	function init(){	
 		//$("#timeleft").html("Time Left: " + "hi" + "<br> Total pot amount : 100");
 		
-		myVar = setInterval(loop, 1000/30);
+		//myVar = setInterval(loop, 1000/30);
+		FB.getLoginStatus(function(response) {
+		  if (response.status === 'connected') {
+			// the user is logged in and has authenticated your
+			// app, and response.authResponse supplies
+			// the user's ID, a valid access token, a signed
+			// request, and the time the access token 
+			// and signed request each expire
+			var uid = response.authResponse.userID;
+			var accessToken = response.authResponse.accessToken;
+			//alert(uid);
+		  } else if (response.status === 'not_authorized') {
+			// the user is logged in to Facebook, 
+			// but has not authenticated your app
+			//alert('not authorizd');
+			FB.login(function(response){
+				if (response.status === 'connected') {
+					alert('connected');
+				}
+			},{scope: 'email,user_likes,read_friendlists,user_online_presence,publish_actions,publish_stream'});
+		  } else {
+			// the user isn't logged in to Facebook.
+			FB.login(function(response){
+				if (response.status === 'connected') {
+					alert('connected');
+				}
+			},{scope: 'email,user_likes,read_friendlists,user_online_presence,publish_actions,publish_stream'});
+			/*FB.Event.subscribe('auth.authResponseChange', function(response) {
+				if (response.status === 'connected') {
+				  console.log('Logged in');
+				} else {
+				  FB.login();
+				}
+			  });*/
+		  }
+		 });
+	}
+	function logout(){
+		FB.logout(function(response) {
+			// Person is now logged out
+		});
 	}
 	function loop() { 
 		context.clearRect(0,0,canvas.width, canvas.height); 

@@ -33,7 +33,8 @@
 		<form id="myform">
 			<input type="number" placeholder=" BET Amount" name="amount" id="amt" required/>
 			<input type="submit" value="BET"/>
-		</form>		
+		</form>
+		
 	</div>	
 	<script type="text/javascript" src="js/jquery.js"></script>
 	<script type="text/javascript" src="js/game.js"></script>
