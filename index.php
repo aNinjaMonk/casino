@@ -27,15 +27,16 @@
        }(document, 'script', 'facebook-jssdk'));
     </script>
 	<div id="content">
+		<?php require('db.php'); ?>
 		<canvas id="mycan" width="300" height="300" style="border:1px solid #000000;"></canvas>
 		<br>
-		
+		<div id="credit"></div><img src="img/add.png" width="30" height="30" id="add"/>
+		<div id="potamt"></div>
 		<form id="myform">
 			<input type="number" placeholder=" BET Amount" name="amount" id="amt" required/>
 			<input type="submit" value="BET"/>
-		</form>
-		
-	</div>	
+		</form>		
+	</div>
 	<script type="text/javascript" src="js/jquery.js"></script>
 	<script type="text/javascript" src="js/game.js"></script>
 </body>

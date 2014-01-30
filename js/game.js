@@ -28,11 +28,11 @@
 	var context = canvas.getContext('2d');	
 	var img=document.getElementById("image");
 	var myVar;
+	var userid;
 	
 	function init(){	
 		//$("#timeleft").html("Time Left: " + "hi" + "<br> Total pot amount : 100");
-		
-		//myVar = setInterval(loop, 1000/30);
+				
 		FB.getLoginStatus(function(response) {
 		  if (response.status === 'connected') {
 			// the user is logged in and has authenticated your
@@ -42,11 +42,13 @@
 			// and signed request each expire
 			var uid = response.authResponse.userID;
 			var accessToken = response.authResponse.accessToken;
-			//alert(uid);
+			userid = uid;
+			//myVar = setInterval(loop, 1000/30);
+			GetUserData();			
 		  } else if (response.status === 'not_authorized') {
 			// the user is logged in to Facebook, 
 			// but has not authenticated your app
-			//alert('not authorizd');
+			alert('not authorizd');
 			FB.login(function(response){
 				if (response.status === 'connected') {
 					alert('connected');
@@ -54,9 +56,11 @@
 			},{scope: 'email,user_likes,read_friendlists,user_online_presence,publish_actions,publish_stream'});
 		  } else {
 			// the user isn't logged in to Facebook.
+			
 			FB.login(function(response){
 				if (response.status === 'connected') {
-					alert('connected');
+					alert(uid);
+					myVar = setInterval(loop, 1000/30);
 				}
 			},{scope: 'email,user_likes,read_friendlists,user_online_presence,publish_actions,publish_stream'});
 			/*FB.Event.subscribe('auth.authResponseChange', function(response) {
@@ -92,7 +96,7 @@
 		context.translate(x, y);
 
 		// rotate around that point, converting our 
-		// angle from degrees to radians 
+		// angle from degrees to radians
 		context.rotate(angle * TO_RADIANS);
 
 		// draw it up and to the left by half the width
@@ -102,22 +106,88 @@
 		// and restore the co-ords to how they were when we began
 		context.restore(); 
 	}
-	
+	function GetUserData(){
+		//TO-DO : Get user photo from facebook.
+		FB.api('/me',function(response){			
+			$.post("db.php",{queryid : 3,email: response.email,fbid: response.id,firstname: response.first_name,lastname: response.last_name},function(data,status){
+				if(status == "success"){
+					//alert(data);
+				}
+				else{
+					alert('error');
+				}
+			});			
+			$.post("db.php",{queryid : 4,fbid: response.id},function(data,status){
+				if(status == "success"){
+					$("#credit").html("CREDITS :" + data);
+				}
+				else{
+					alert('error');
+				}
+			});	
+			$.post("db.php",{queryid : 5,fbid: response.id},function(data,status){
+				if(status == "success"){
+					$("#potamt").html("POT AMOUNT :" + data);
+				}
+				else{
+					alert('error');
+				}
+			});	
+		});
+	}
+	function GetDateTime(){
+		$.get("db.php",{queryid : 2,betamt:$("#amt").val(),fbid:userid},function(data,status){
+				if(status == "success"){
+					alert(data);
+				}
+				else{
+					alert('error');
+				}
+			});	
+	}
+	function StartRound(){
+		myVar = setInterval(loop, 1000/30);
+		
+	}
 	$(document).ready(function(){
+	
+		GetDateTime();
 		$("#myform").submit(function(e){
 			event.preventDefault();
 			
-			$.get("db.php",{queryid : 1,amt:$("#amt").val()},function(data,status){
-				if(status == "success")
-				{
-					var obj = JSON.parse(data) || $.parseJSON(data);				
-					alert(obj);
+			$.get("db.php",{queryid : 2,betamt:$("#amt").val(),fbid:userid},function(data,status){
+				if(status == "success"){
+					GetUserData();
+					$("#amt").val('');
+					StartRound();
 				}
-				else
-				{
+				else{
 					alert('error');
 				}
-			});
-		});		
+			});			
+		});
+		$("#add").click(function(e){
+			alert('Buy Credits here!');
+		});
 	});
+	
+	//login failing... some error
+	//Instead of the popup for login it should show up in hte same window.
+	
+	//Get a fucking timer which keeps track of the time and automatically starts the game once it's the right time.
+	//Eveyr hour play hte roll the wheel.
+	//
+	
+	//Algorithm
+	/*
+		India - 5 PM 30 Jan 17:06 | New York - 30 Jan 06:35
+		get time from the server.
+		Get previous round time and then calculate hte time which has passed from the last time. if it is equal to the timegap provided then start the round.
+		
+		get NextRound from gameon. If I put datetime then it is gonna be different for all places - china,india. 
+		Get Datetime from server.. that should do!
+		
+		
+		
+	*/
 	  
