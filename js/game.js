@@ -116,7 +116,7 @@
 	function GetUserData(){
 		//TO-DO : Get user photo from facebook.
 		FB.api('/me',function(response){			
-			$.post("db.php",{queryid : 3,email: response.email,fbid: response.id,firstname: response.first_name,lastname: response.last_name},function(data,status){
+			$.get("db.php",{queryid : 3,email: response.email,fbid: response.id,firstname: response.first_name,lastname: response.last_name},function(data,status){
 				if(status == "success"){
 					//alert(data);
 				}
@@ -124,7 +124,7 @@
 					alert('error');
 				}
 			});			
-			$.post("db.php",{queryid : 4,fbid: response.id},function(data,status){
+			$.get("db.php",{queryid : 4,fbid: response.id},function(data,status){
 				if(status == "success"){
 					$("#credit").html("CREDITS :" + data);
 				}
@@ -132,7 +132,7 @@
 					alert('error');
 				}
 			});	
-			$.post("db.php",{queryid : 5,fbid: response.id},function(data,status){
+			$.get("db.php",{queryid : 5,fbid: response.id},function(data,status){
 				if(status == "success"){
 					$("#potamt").html("POT AMOUNT :" + data);
 				}
