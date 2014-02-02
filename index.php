@@ -1,13 +1,5 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title>Get rich - every hour</title>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta charset="UTF-8">
-<!--<link rel="stylesheet" type="text/css" href="css/bootstrap.css"></link>-->
-<link rel="stylesheet" type="text/css" href="css/style.css"></link>
-</head>
-<body>
+	<?php include('_header.php'); ?>
+	
 	<div id="fb-root"></div>
     <script>
       window.fbAsyncInit = function() {
@@ -25,8 +17,7 @@
          fjs.parentNode.insertBefore(js, fjs);
        }(document, 'script', 'facebook-jssdk'));
     </script>
-	<div id="content">
-		<?php require('db.php'); ?>
+	<div id="content">		
 		<canvas id="mycan" width="300" height="300" style="border:1px solid #000000;"></canvas>
 		<br>
 		<div id="credit"></div><img src="img/add.png" width="30" height="30" id="add"/>
@@ -37,7 +28,5 @@
 		</form>
 		<input type="button" value="Click" id="pay"/>
 	</div>
-	<script type="text/javascript" src="js/jquery.js"></script>
-	<script type="text/javascript" src="js/game.js"></script>
-</body>
-</html>
+	
+	<?php include('_footer.php'); ?>

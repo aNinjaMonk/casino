@@ -1,0 +1,15 @@
+ec2-54-225-101-18.compute-1.amazonaws.com
+database: d28l3vun1vrpos
+user: krvecwookvpdqx
+5432
+I1htHeAG4a9Y5qnX4b7_-rn58P
+
+
+url: CLEARDB_DATABASE_URL: mysql://beac3e4e6bac73:cfe80b32@us-cdbr-east-05.cleardb.net/heroku_45a35c12d027e99?reconnect=true
+db: heroku_45a35c12d027e99
+username: beac3e4e6bac73
+password: cfe80b32
+
+
+//A variable to set local and remote db switch.
+//See how to work with templates in php.
