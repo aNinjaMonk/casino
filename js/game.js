@@ -32,7 +32,18 @@
 	
 	function init(){	
 		//$("#timeleft").html("Time Left: " + "hi" + "<br> Total pot amount : 100");
-				
+		
+		$("#pay").click(function(){
+			FB.ui({
+				method: 'pay',
+				action: 'purchaseitem',
+				product: 'http://www.friendsmash.com/og/coins.html',
+				quantity: 10
+			},function(data){
+				console.log(data);
+			});
+		});
+		
 		FB.getLoginStatus(function(response) {
 		  if (response.status === 'connected') {
 			// the user is logged in and has authenticated your
@@ -42,6 +53,7 @@
 			// and signed request each expire
 			var uid = response.authResponse.userID;
 			var accessToken = response.authResponse.accessToken;
+			alert(uid);
 			userid = uid;
 			//myVar = setInterval(loop, 1000/30);
 			GetUserData();			
@@ -175,8 +187,7 @@
 	//Instead of the popup for login it should show up in hte same window.
 	
 	//Get a fucking timer which keeps track of the time and automatically starts the game once it's the right time.
-	//Eveyr hour play hte roll the wheel.
-	//
+	//Eveyr hour play the roll the wheel.
 	
 	//Algorithm
 	/*
@@ -186,8 +197,8 @@
 		
 		get NextRound from gameon. If I put datetime then it is gonna be different for all places - china,india. 
 		Get Datetime from server.. that should do!
-		
-		
-		
+			
 	*/
-	  
+	
+	//Get the bet number... 
+	//
