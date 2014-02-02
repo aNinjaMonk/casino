@@ -5,14 +5,10 @@
 //Fetch the last winner account info,pic and put in the frame.
 
 //Rotate the wheel every hour.
-
 //Show the clock and current timing.
 
 //Allow someone to bid on the possible numbers.
 
-// Store the facebook id of the user in the database.
-
-// 
 	window.addEventListener("load", init); 
 	
 	var counter = 0,
