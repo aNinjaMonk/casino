@@ -37,7 +37,7 @@
 			FB.ui({
 				method: 'pay',
 				action: 'purchaseitem',
-				product: 'http://www.friendsmash.com/og/coins.html',
+				product: 'http://www.friendsmash.com/og/coins.html', 
 				quantity: 10
 			},function(data){
 				console.log(data);

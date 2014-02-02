@@ -1,6 +1,6 @@
 <?php
 
-	$app_secret = '7e099e0e4a126aab7786f0dcb2a9a27a';
+	$app_secret = 'adf710d8999496363b8d0348a5a467db';
 
 	// Validate request is from Facebook and parse contents for use.
 	$request = parse_signed_request($_POST['signed_request'], $app_secret);'
