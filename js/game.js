@@ -37,7 +37,7 @@
 			FB.ui({
 				method: 'pay',
 				action: 'purchaseitem',
-				product: 'https://getricheveryhour.herokuapp.com/og/coin.html', 
+				product: 'http://getricheveryhour.herokuapp.com/og/coin.html', 
 				quantity: 10
 			},function(data){
 				console.log(data);
