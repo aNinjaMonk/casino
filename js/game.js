@@ -37,7 +37,7 @@
 			FB.ui({
 				method: 'pay',
 				action: 'purchaseitem',
-				product: 'http://www.friendsmash.com/og/coins.html', 
+				product: 'https://getricheveryhour.herokuapp.com/og/coin.html', 
 				quantity: 10
 			},function(data){
 				console.log(data);
@@ -52,8 +52,7 @@
 			// request, and the time the access token 
 			// and signed request each expire
 			var uid = response.authResponse.userID;
-			var accessToken = response.authResponse.accessToken;
-			alert(uid);
+			var accessToken = response.authResponse.accessToken;			
 			userid = uid;
 			//myVar = setInterval(loop, 1000/30);
 			GetUserData();			
