@@ -69,8 +69,9 @@
 	
 	if(isset($_REQUEST['queryid'])){
 		include('config.php');
-		$con = mysqli_connect(DB_SERVER,DB_USER,DB_PASSWORD,DB_NAME);
-		
+		if($con = mysqli_connect(DB_SERVER,DB_USER,DB_PASSWORD,DB_NAME)){
+			alert('works!!');
+		}
 		/*include('MemcacheSASL.php');
 
 		$mc = new MemcacheSASL;
