@@ -21,7 +21,8 @@
 		<canvas id="mycan" width="300" height="300" style="border:1px solid #000000;"></canvas>
 		<br>
 		<div id="credit"></div><img src="img/add.png" width="30" height="30" id="add"/>
-		<div id="potamt"></div>
+		<div id="potamt"></div><br>
+		Next Round Begins in: <div id="countdown"></div><br>
 		<form id="myform">
 			<input type="number" placeholder=" BET Amount" name="amount" id="amt" required/>
 			<input type="submit" value="BET"/>

@@ -66,7 +66,7 @@
 			
 			FB.login(function(response){
 				if (response.status === 'connected') {
-					alert(uid);
+					
 					myVar = setInterval(loop, 1000/30);
 				}
 			},{scope: 'email,user_likes,read_friendlists,user_online_presence,publish_actions,publish_stream'});
@@ -143,21 +143,55 @@
 		});
 	}
 	function GetDateTime(){
-		$.get("db.php",{queryid : 2,betamt:$("#amt").val(),fbid:userid},function(data,status){
-				if(status == "success"){
-					alert(data);
-				}
-				else{
-					alert('error');
-				}
-			});	
+		var d = new Date();
+		alert(d.getTime());
+		//fetch time from db. - lastTime
+		//substract from current time.. currentTime. If  last + required > current then 
+		//put and 
+		//I have to run this time thing even if no one has opened the application.. hence it can not be done in client side. 
+		//Needs to be done periodically on the server.. db updation part - lastTime + required into db.
+		//
+		
+		//1970 - now
+		
+		//Algorithm
+		/*
+			India - 5 PM 30 Jan 17:06 | New York - 30 Jan 06:35
+			get time from the server.
+			Get previous round time and then calculate hte time which has passed from the last time. if it is equal to the timegap provided then start the round.
+			
+			get NextRound from gameon. If I put datetime then it is gonna be different for all places - china,india. 
+			Get Datetime from server.. that should do!
+			
+			function getDateTime(){
+				//get time from system clock.. and check how much time remains till 
+				var d = new date();
+				alert(d.getTime());
+				
+				var lastTimerStop = 1391402644677;
+				var timeGap = 60*30;
+				var timerStop = lastTimerStop + timeGap;
+				
+				//get system time. 
+				var d = new date();
+				alert(d.getTime());
+				
+				//Get the time remaining till next timerStop and show the time countdown.
+				
+				
+			}
+		*/
+	
+	
 	}
 	function StartRound(){
 		myVar = setInterval(loop, 1000/30);
 		
 	}
 	$(document).ready(function(){
-	
+		//$("#countdown").val("abhi");
+		//1391402644677
+		
 		GetDateTime();
 		$("#myform").submit(function(e){
 			event.preventDefault();
@@ -176,24 +210,16 @@
 		$("#add").click(function(e){
 			alert('Buy Credits here!');
 		});
+		
 	});
 	
-	//login failing... some error
+	//login failing... some error .login called before fb being initialized.
 	//Instead of the popup for login it should show up in hte same window.
 	
 	//Get a fucking timer which keeps track of the time and automatically starts the game once it's the right time.
 	//Eveyr hour play the roll the wheel.
 	
-	//Algorithm
-	/*
-		India - 5 PM 30 Jan 17:06 | New York - 30 Jan 06:35
-		get time from the server.
-		Get previous round time and then calculate hte time which has passed from the last time. if it is equal to the timegap provided then start the round.
-		
-		get NextRound from gameon. If I put datetime then it is gonna be different for all places - china,india. 
-		Get Datetime from server.. that should do!
-			
-	*/
+	
 	
 	//Get the bet number... 
 	//

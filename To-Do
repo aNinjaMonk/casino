@@ -10,6 +10,5 @@ db: heroku_45a35c12d027e99
 username: beac3e4e6bac73
 password: cfe80b32
 
-
-//A variable to set local and remote db switch.
 //See how to work with templates in php.
+//

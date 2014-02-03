@@ -1,13 +1,21 @@
 <?php
 	
-	/*define('DB_SERVER',"localhost";
+	/*
+	define('DB_SERVER',"localhost");
 	define('DB_USER',"root");
-	define('DB_PASS',"";
-	define('DB_NAME',"everyhour";
+	define('DB_PASSWORD',"");
+	define('DB_NAME',"everyhour");
 	*/
 	
-	define('DB_SERVER',"us-cdbr-east-05.cleardb.net");
-	define('DB_USER',"beac3e4e6bac73");
-	define('DB_PASSWORD',"cfe80b32");
-	define('DB_NAME',"heroku_45a35c12d027e99");	
+	$url=parse_url($_ENV['CLEARDB_DATABASE_URL']);
+	$server = $url["host"];
+	$username = $url["user"];
+	$password = $url["pass"];
+    $db = substr($url["path"],1);
+	
+	define('DB_SERVER',$server);
+	define('DB_USER',$username);
+	define('DB_PASSWORD',$password);
+	define('DB_NAME',$db);	
+	
  ?>
