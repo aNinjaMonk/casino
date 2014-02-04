@@ -219,7 +219,7 @@
 	//Get a fucking timer which keeps track of the time and automatically starts the game once it's the right time.
 	//Eveyr hour play the roll the wheel.
 	
-	
+	//Rule of the game: 
 	
 	//Get the bet number... 
 	//

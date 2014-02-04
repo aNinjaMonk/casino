@@ -12,4 +12,5 @@ password: cfe80b32
 
 //See how to work with templates in php.
 //php data calls not working on server.
-//
+//memcache not working ... some error. Get it working.
+//embedding a class file in php.
