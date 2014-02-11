@@ -12,5 +12,10 @@ password: cfe80b32
 
 //See how to work with templates in php.
 //php data calls not working on server.
-//memcache not working ... some error. Get it working.
-//embedding a class file in php.
+//countdown get it working.
+//Show numbers user wants to bet on.. from 1-8.
+//List the bets you applied and list the bets of other people as well.
+//Rollback transaction if credit balance low.. popup to buy more credits.
+//Roll the wheel using EaseIn. 
+//Give various language options as well.
+

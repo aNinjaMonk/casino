@@ -13,22 +13,44 @@
 	
 	var counter = 0,
 		logoImage = new Image(),
+		dealer = new Image(),
 		TO_RADIANS = Math.PI/180;
 	
 	logoImage.src = 'img/wheel.jpg';
-	
+	dealer.src = 'img/dealer.png';
 	var canvas = document.getElementById('mycan');
-    canvas.width = 300; 
-	canvas.height = 300;
+    canvas.width = 600; 
+	canvas.height = 400;
 	
 	var context = canvas.getContext('2d');	
 	var img=document.getElementById("image");
 	var myVar;
 	var userid;
 	
-	function init(){	
-		//$("#timeleft").html("Time Left: " + "hi" + "<br> Total pot amount : 100");
+	function init(){
+		/*$('#counter').countdown({
+			stepTime: 60,
+			format: 'hh:mm:ss',
+			startTime: "12:32:55",
+			digitImages: 6,
+			digitWidth: 53,
+			digitHeight: 77,
+			timerEnd: function() {  },
+			image: "img/digits.png"
+		  });
+		 */
+		 /*
+		var liftoffTime = 5;
+		$('#counter').countdown({until: liftoffTime, format: 'S', 
+					onTick: everyFive, tickInterval: 5});
 		
+		function everyFive(periods) {
+			$('#counter').text(periods[4] + ':' + (periods[5]) + 
+				':' + (periods[6])); 
+		}*/
+		$("select").change(function(){			
+			$("#selnum").val($("select").val());
+		});
 		$("#pay").click(function(){
 			FB.ui({
 				method: 'pay',
@@ -87,10 +109,13 @@
 	}
 	function loop() { 
 		context.clearRect(0,0,canvas.width, canvas.height); 
-		drawRotatedImage(logoImage,150,150,counter);
+		drawRotatedImage(logoImage,150,150,counter);		
+		context.translate(400,0);
+		context.scale(-1,1);
+		context.drawImage(dealer,0,0);
 		counter+=2;	
 		if(counter == 360)
-			counter = 0;		
+			counter = 0;
 	}	
 	
 	function drawRotatedImage(image, x, y, angle) { 
@@ -144,7 +169,6 @@
 	}
 	function GetDateTime(){
 		var d = new Date();
-		alert(d.getTime());
 		//fetch time from db. - lastTime
 		//substract from current time.. currentTime. If  last + required > current then 
 		//put and 
@@ -185,7 +209,7 @@
 	
 	}
 	function StartRound(){
-		myVar = setInterval(loop, 1000/30);
+		myVar = setInterval(loop, 1000);
 		
 	}
 	$(document).ready(function(){
@@ -193,24 +217,30 @@
 		//1391402644677
 		
 		GetDateTime();
-		$("#myform").submit(function(e){
+		$("#myform").submit(function(e){			
 			event.preventDefault();
-			
-			$.get("db.php",{queryid : 2,betamt:$("#amt").val(),fbid:userid},function(data,status){
-				if(status == "success"){
-					GetUserData();
-					$("#amt").val('');
-					StartRound();
-				}
-				else{
-					alert('error');
-				}
-			});			
+			if($('#selnum').val() == ''){
+				alert('select number you want to bet on');
+				return;
+			}
+			else{				
+				$.get("db.php",{queryid : 2,betamt:$("#amt").val(),fbid:userid},function(data,status){
+					if(status == "success"){
+						GetUserData();
+						$("#amt").val('');						
+					}
+					else{
+						alert('error');
+					}
+				});
+			}
 		});
 		$("#add").click(function(e){
 			alert('Buy Credits here!');
 		});
-		
+		$("#start").click(function(e){
+			StartRound(); 
+		});
 	});
 	
 	//login failing... some error .login called before fb being initialized.
@@ -221,5 +251,14 @@
 	
 	//Rule of the game: 
 	
-	//Get the bet number... 
+	//Get the bet number...
+	//Think from perspective of a facebook app.
+	
+	//Lights on and off around the wheel portions.
+	//Bets terms. Amount betted X number betted on. 
+	//Add Joker.
+	//
+	//No registration.. no pay terms, no graphics complexity, 
+	//Focus on one thing.. Addiction!!
+	
 	//

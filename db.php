@@ -71,13 +71,13 @@
 		include('config.php');
 		$con = mysqli_connect(DB_SERVER,DB_USER,DB_PASSWORD,DB_NAME);
 		
-		include('MemcacheSASL.php');
+		/*include('MemcacheSASL.php');
 		
 		$mc = new MemcacheSASL();
 		list($host, $port) = explode(':', $_ENV['MEMCACHEDCLOUD_SERVERS']);
 		$mc->addServer($host, $port);
 		$mc->setSaslAuthData($_ENV['MEMCACHEDCLOUD_USERNAME'], $_ENV['MEMCACHEDCLOUD_PASSWORD']);		
-		$mc->add('test','sample');
+		$mc->add('test','sample');*/
 		
 		if($_REQUEST['queryid'] == 1){
 			GetRoundMoney(2);
