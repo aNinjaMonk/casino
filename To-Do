@@ -19,3 +19,7 @@ password: cfe80b32
 //Roll the wheel using EaseIn. 
 //Give various language options as well.
 
+Scene 1
+> Loading page
+
+Scene 2
