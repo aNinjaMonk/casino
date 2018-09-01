@@ -18,8 +18,14 @@ password: cfe80b32
 //Rollback transaction if credit balance low.. popup to buy more credits.
 //Roll the wheel using EaseIn. 
 //Give various language options as well.
+//
 
 Scene 1
 > Loading page
 
 Scene 2
+
+>> 25 segments of various number combinations with various weights attached for various numbers.
+
+>> full Screen 
+>> Loading screen

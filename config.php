@@ -1,12 +1,11 @@
 <?php
-	
-	/*
+		
 	define('DB_SERVER',"localhost");
 	define('DB_USER',"root");
 	define('DB_PASSWORD',"");
-	define('DB_NAME',"everyhour");
-	*/
+	define('DB_NAME',"everyhour");	
 		
+	/*
 	$url=parse_url($_ENV['CLEARDB_DATABASE_URL']);
 	$server = $url["host"];
 	$username = $url["user"];
@@ -17,5 +16,5 @@
 	define('DB_USER',$username);
 	define('DB_PASSWORD',$password);
 	define('DB_NAME',$db);	
-	
+	*/
  ?>
